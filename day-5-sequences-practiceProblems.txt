@@ -1,0 +1,50 @@
+#Program_1
+
+#!/bin/bash 
+number=$(( RANDOM%10 ));
+echo "Single digit no. is:" $number;
+
+#Program_2
+
+#!/bin/bash 
+#shuf -i 1-6 -n 6;
+dice=$((((RANDOM%6))+1));
+echo "The no. is:" $dice;
+
+#Program_3
+
+#!/bin/bash 
+#a=`shuf -i 1-6 -n 1`;
+#b=`shuf -i 1-6 -n 1`;
+a=$((((RANDOM%6))+1));
+b=$((((RANDOM%6))+1));
+c=$(($a+$b));
+echo $c;
+
+#Program_4
+
+#!/bin/bash 
+one=$((((RANDOM%90))+10));
+two=$((((RANDOM%90))+10));
+three=$((((RANDOM%90))+10));
+four=$((((RANDOM%90))+10));
+five=$((((RANDOM%90))+10));
+sum=$(($one+$two+$three+$four+$five));
+avg=$(((($sum))/5));
+
+#Program_5
+
+#!/bin/bash 
+res= `echo | awk '{ printf "%0.2f ft.", (42/2); }'`
+#1sqm=10.76sqft
+#1sqft=0.092
+#ftarea=2400
+#read -p "Enter length in feet:" L
+   #read -p "Enter breath in feet:" B
+   l= echo | awk '{ printf "%0.02f\n", (60 / 3.281); }'
+   b= echo | awk '{ printf "%0.02f\n", (40 / 3.281); }'
+   Area= echo | awk '{ printf "%0.02f ft.\n", ( (60/ 3.281) * (40 / 3.281) ); }'
+#plots=25
+#Area=222.95meters
+#ac=Area*Area*0.00024711
+area= echo | awk '{ printf "%0.4f acres\n", ( (222.95*222.95*0.00024711) ); }'
