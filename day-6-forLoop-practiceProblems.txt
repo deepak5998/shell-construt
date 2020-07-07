@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #Program_1
 #Print table of the powers of 2
 
@@ -92,3 +93,99 @@ else
 fi
 done
 printf "= $factorial"
+=======
+#Program_1
+#Print table of the powers of 2
+
+#!/bin/bash 
+read -p "Enter the number: " n
+for (( i=1; i<=$n; i++ ))
+do
+res=$(echo |awk '{ print 2^i }' i=$i)
+echo "2^$i=$res"
+done
+printf "\n"
+
+#Program_2
+#Print nth harmonic number
+
+#!/bin/bash 
+read -p "Enter the number: " n
+for (( i=1; i<=$n; i++))
+do
+res=$(echo| awk '{ print res += 1/i}' i=$i res=$res)
+if [ $i -eq 1 ]
+then
+	printf "1/$i"
+else
+	printf "+ 1/$i"
+fi
+done
+printf "=$res"
+
+#Program_3
+#Find given no. is prime
+
+#!/bin/bash 
+read -p "Enter the number: " n
+num=$(echo |awk '{ print n/2}' n=$n)
+for (( i=1; i<=$num; i++))
+do
+rem=$(echo |awk '{print n%i}' n=$n i=$i)
+	if [ $rem -eq 0 ]
+	then
+		flag=1;
+	else
+		flag=0;
+	fi
+done
+if [ $flag -eq 1 ]
+then
+	echo "$n is Not Prime"
+else
+	echo "$n is Prime"
+fi
+
+#Program_4
+#Prime nos. in a given range
+
+#!/bin/bash 
+
+read -p "Enter first limit: " x
+read -p "Enter last limit: " y
+for (( i=$x; i<=$y; i++ ))
+do
+count=0;
+	for (( j=2; j<=$i/2; j++))
+	do
+	rem=$(($i%$j))
+		if [ $rem -eq 0 ]
+		then
+			count=$(($count+1))
+		fi
+	done
+if [ $count -eq 0 ]
+then
+	echo "$i is Prime"
+fi
+done
+printf "\n"
+
+#Program_5
+#Calculate factorial of a given no.
+
+#!/bin/bash 
+read -p "Enter the number: " n
+factorial=1;
+for (( i=1; i<=$n; i++))
+do
+	factorial=$(($i*$factorial))
+if [ $i -eq 1 ]
+then
+	printf "$i"
+else
+	printf "*$i"
+fi
+done
+printf "= $factorial"
+>>>>>>> develop
