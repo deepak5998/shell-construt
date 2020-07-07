@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 #Problem_1
 #Print table of power of 2 less than 256
 
@@ -440,4 +441,230 @@ then
 else
 	echo "$rev is Prime Palindrome"
 fi
+>>>>>>> develop
+=======
+#Problem_1
+#Print table of power of 2 less than 256
+
+#!/bin/bash 
+read -p "Enter the number: " n
+valid=true;
+while [ $valid ]
+do
+	for (( i=1; i<=$n; i++ ))
+	do
+	res=$(echo |awk '{ print 2^i }' i=$i)
+	echo "2^$i=$res"
+	if [ $res -eq 256 ]
+	then
+		flag=1
+		break
+	fi
+	done
+	printf "\n"
+if [ $flag -eq 1 ]
+then
+	break
+fi
+done
+
+#Program_2
+#Find Magic Number
+
+#!/bin/bash 
+echo "Try ur luck"
+echo "think a number in the range 1-100 : "
+for ((i=0; i<100; i++))
+do
+    numberArray[$i]=$(($i+1)) 
+done
+while true
+do
+    middleNumber=$((${#numberArray[@]}/2))
+    middleValue=${numberArray[$(($middleNumber-1))]}
+    echo "whether your thinking value is $middleValue"
+    read -p "press 1 for yes ,0 for no : " userResponse
+    if [ $userResponse -eq 1 ]
+        then
+            echo "hurray i found it"
+            break;
+    else
+        echo ";( ok,whether the guessed value is lesser than $middleValue"
+        read -p "press 1 if it is greater press 2 : " userSecondResponse
+        if [ $userSecondResponse -eq 1 ]
+            then
+                newArray=()
+                for ((j=0; j<$(($middleValue)); j++))
+                    do
+                        echo $j
+                        newArray[$j]=$(($j+1))
+                    done
+                    numberArray=(${newArray[@]})
+						  
+       else    
+            newArrayTwo=()
+                for ((k=$(($middleValue)); k<100; k++))
+                    do
+                        newArrayTwo[$k]=$(($k+1))
+                    done
+                    numberArray=(${newArrayTwo[@]})       
+        fi
+    fi
+    echo ${numberArray[@]}
+done 
+
+#Program_3
+#Flip coin till either one wins 11 times
+
+#!/bin/bash
+valid=true;
+count=0;
+flag=0;
+while [ $valid ]
+read -p "Flip" n
+do
+	case $n in
+		0)
+			echo "Head";
+			count=$(($count+1));
+			if [ $count -eq 11 ]
+			then
+				break
+			fi;;
+		1)
+			echo "Tails";
+			flag=$(($flag+1))
+			if [ $flag -eq 11 ]
+			then 
+				break
+			fi;;
+	esac 
+done
+
+#Program_4
+#Gambler Problem
+
+#!/bin/bash
+rs=5;
+count=0;
+flag=0;
+while [ $rs -ne 0 ]
+do
+read -p "Enter 0 for Loose and 1 for Win: " bet
+count=$((count+1))
+case $bet in
+	0)
+		echo "Loose";
+		rs=$(($rs-1));;
+	1)
+		flag=$(($flag+1))
+		echo "Win";
+		rs=$(($rs+1));;
+esac
+if [ $rs -eq 0 -o $rs -eq 10 ]
+then
+	break
+fi
+done
+echo "Total bets: $count"
+echo "Total Wins: $flag"
+
+#Program_5
+#Calculate temperature in degF or degC
+
+#!/bin/bash
+
+read -p "Enter Scale : " scale
+read -p "Enter Temp from (0-100)degC or (32-212)degF: " temp
+
+case $scale in
+	C) n=$(echo | awk '{print one*(9/5)+32}' one=$temp )
+   	echo "$n degF";;
+
+	F) n=$(echo | awk '{print one*(5/9)}' one=$(( $temp-32 )) );
+      echo "$n degC";;
+esac
+
+#Program_6
+#Palindrome Check
+
+#!/bin/bash 
+read -p "Enter the number: " n
+rev=0
+temp=$n
+
+while [ $n -ne 0 ]
+do
+	r=$(($n%10))
+	rev=$(((($rev*10))+$r))
+	n=$(($n/10))
+done
+echo "Reverse of the number: $rev"
+
+
+if [ $temp -eq $rev ]
+then
+	echo "$temp is Palindrome"
+else
+	echo "$temp is NOT Palindrome"
+fi
+
+#Program_7
+#Prime Palindrome Check
+
+#!/bin/bash 
+read -p "Enter the number: " n
+for (( i=1; i<=$n/2; i++))
+do
+rem=$(($n%$i))
+	if [ $rem -eq 0 ]
+	then
+		flag=1;
+	else
+		flag=0;
+	fi
+done
+if [ $flag -eq 1 ]
+then
+	echo "$n is Not Prime"
+else
+	echo "$n is Prime"
+fi
+rev=0
+temp=$n
+
+while [ $n -ne 0 ]
+do
+	r=$(($n%10))
+	rev=$(((($rev*10))+$r))
+	n=$(($n/10))
+done
+echo "Reverse of the number: $rev"
+if [ $temp -eq $rev ]
+then
+	echo "$temp is Palindrome"
+else
+	echo "$temp is NOT Palindrome"
+fi
+
+for (( j=1; j<=$rev/2; j++))
+do
+rem=$(($rev%$j))
+	if [ $rem -eq 0 ]
+	then
+		flag=1;
+	else
+		flag=0;
+	fi
+done
+if [ $flag -eq 1 ]
+then
+	echo "$rev is Not Prime Palindrome"
+else
+	echo "$rev is Prime Palindrome"
+fi
+<<<<<<< HEAD
+>>>>>>> develop
+=======
+>>>>>>> origin
 >>>>>>> develop
