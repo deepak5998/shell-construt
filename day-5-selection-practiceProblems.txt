@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #Program using ifelse, ifelif and case
 #Program_1
 
@@ -353,3 +354,360 @@ case $a in
 		echo Invalid Choice;;
 esac
 
+=======
+#Program using ifelse, ifelif and case
+#Program_1
+
+#!/bin/bash 
+#to find maximum and minimum for 3 random 3 digit no
+threeDigitNoOne=$(((RANDOM%900)+100))
+threeDigitNoTwo=$(((RANDOM%900)+100))
+threeDigitNoThree=$(((RANDOM%900)+100))
+
+if [ $threeDigitNoOne -gt $threeDigitNoTwo ] && [ $threeDigitNoOne -gt $threeDigitNoThree ]
+then
+echo "$threeDigitNoOne is Maximum Value"
+	if [ $threeDigitNoTwo -lt $threeDigitNoThree ]
+	then
+	echo "$threeDigitNoTwo is Minimum Value"
+	else
+	echo "$threeDigitNoThree is Minimum Value"
+	fi
+elif [ $threeDigitNoTwo -gt $threeDigitNoThree ]
+then
+echo "$threeDigitNoTwo is Maximum Value"
+	if [ $threeDigitNoOne -lt $threeDigitNoThree ]
+	then
+	echo "$threeDigitNoOne is Minimum Value"
+	else
+	echo "$threeDigitNoThree is Minimum Value"
+	fi
+else
+echo "$threeDigitNoThree is Maximum Value"
+	if [ $threeDigitNoOne -lt $threeDigitNoTwo ]
+	then
+	echo "$threeDigitNoOne is Minimum Value"
+	else
+	echo "$threeDigitNoTwo is Minimum Value"
+	fi
+fi
+
+#Program_2
+#day of month between March 20 and June20
+
+#!/bin/bash 
+flag=1
+read day
+read month
+echo $day
+echo $month
+if [ $day -ge 1 -a $day -le 31 -a $month -ge 3 -a $month -le 6 ]
+then
+        if [ $month -eq 3 -a $day -lt 20 ]
+        then
+                flag=0
+        fi
+        if [ $month -eq 6 -a $day -gt 20 ]
+        then
+                flag=0
+         fi
+else
+        flag=0
+fi
+
+if [ $flag == 1 ]
+then
+        echo true
+else
+        echo false
+fi
+
+#Program_3
+#Leap year
+
+#!/bin/bash 
+
+year=0
+isleap="false"
+
+echo -n "Enter year (yyyy) : "
+read year
+
+
+if  [ $((year%100)) -ne 0 ] && [ $((year%400)) -eq 0 ] || [ $((year%4)) -eq 0 ]
+then
+   echo "$year is leap year"
+else
+   echo "$year is NOT leap year"
+fi
+
+#Program_4
+#Simulate a coin flip
+
+#!/bin/bash -x
+
+value=$((RANDOM%2))
+case $value in
+	0)
+		echo Head;;
+	1)
+		echo Tails;;
+esac
+
+#Program_5
+#Read number and write in word
+
+#!/bin/bash 
+#usingCase
+num=`shuf -i 0-10 -n 1`
+case $num in
+	0)
+		echo Zero;;
+	1)
+		echo One;;
+	2)
+		echo Two;;
+	3)
+		echo Three;;
+	4)
+		echo Four;;
+	5)
+		echo Five;;
+	6)
+		echo Six;;
+	7)
+		echo Seven;;
+	8)
+		echo Eight;;
+	9)
+		echo Nine;;
+	*)
+		echo Not a Single digit no.
+esac
+
+#using ifelif
+if [ $num == 0 ]
+then
+	echo Zero;
+elif [ $num == 1 ]
+then
+	echo One;
+elif [ $num == 2 ]
+then
+	echo Two;
+elif [ $num == 3 ]
+then
+	echo Three;
+elif [ $num == 4 ]
+then
+	echo Four;
+elif [ $num == 5 ]
+then
+	echo Five;
+elif [ $num == 6 ]
+then
+	echo Six;
+elif [ $num == 7 ]
+then
+	echo Seven;
+elif [ $num == 8 ]
+then
+	echo Eight;
+elif [ $num == 9 ]
+then
+	echo Nine;
+else
+	echo Not a Single digit no.
+fi 
+
+#Program_6
+#Read number and display weekday
+
+#!/bin/bash 
+#usingCase
+week=`shuf -i 1-8 -n 1`
+case $week in
+	1)
+		echo Sunday;;
+	2)
+		echo Monday;;
+	3)
+		echo Tuesday;;
+	4)
+		echo Wednesday;;
+	5)
+		echo Thursday;;
+	6)
+		echo Friday;;
+	7)
+		echo Saturday;;
+	*)
+		echo Not a correct no.;
+esac
+
+#using ifelif
+if [ $week == 1 ]
+then
+	echo Sunday;
+elif [ $week == 2 ]
+then
+	echo Monday;
+elif [ $week == 3 ]
+then
+	echo Tuesday;
+elif [ $week == 4 ]
+then
+	echo Wednesday;
+elif [ $week == 5 ]
+then
+	echo Thursday;
+elif [ $week == 6 ]
+then
+	echo Friday;
+elif [ $week == 7 ]
+then
+	echo Saturday;
+else
+	echo Not a correct no.;
+fi
+
+#Program_7
+#Read number and display unit
+
+#one way
+number=1288
+case ${#number} in 
+    1)
+    echo "unit";;
+    2)
+    echo "tens";;
+    3)
+    echo "hundreds";;
+    4)
+    echo "thousand";;
+    *)
+    echo "no";;
+esac
+
+#second way
+number=128;
+count=0;
+#this loop will run untill 128 reaches 0
+# first 128/10 =12
+# second 12 /10=1
+# third 1/10=0
+# it will come out the loop
+while [ $number -gt 0 ]
+do
+ #i am dividing and storing the value in same variable at one point it reaches 0   
+ number=`expr $number / 10`
+ $((count++))
+done
+echo $count
+#switch case 
+case $count in 
+    1)
+    echo "unit";;
+    2)
+    echo "tens";;
+    3)
+    echo "hundreds";;
+    4)
+    echo "thousand";;
+    *)
+    echo "no";;
+esac
+
+#Program_8
+#Arithematic Operations and find Max and Min
+
+#!/bin/bash 
+read -p "Enter first value a" a
+read -p "Enter second value b" b
+read -p "Enter third value c" c
+res1=$(echo |awk '{print a+b*c}' a=$a b=$b c=$c)
+echo $res1
+res2=$(echo |awk '{print c+a/b}' a=$a b=$b c=$c)
+echo $res2
+res3=$(echo |awk '{print a%b+c}' a=$a b=$b c=$c)
+echo $res3
+res4=$(echo |awk '{print a*b+c}' a=$a b=$b c=$c)
+echo $res4
+
+if [ $res1 -ge $res2 ] && [ $res1 -ge $res3 ] && [ $res1 -ge $res4 ]
+then
+	echo "$res1 is Maximum"
+	if [ $res2 -le $res3 ] && [ $res2 -le $res4 ]
+	then
+		echo  "$res2 is Minimum"
+	elif [ $res3 -le $res2 ] && [ $res3 -le $res4 ]
+	then
+		echo "$res3 is Minimum"
+	else
+		echo "$res4 is Minimum"
+	fi
+elif [ $res2 -ge $res3 ] && [ $res2 -ge $res4 ]
+then
+	echo "$res2 is Maximum"
+	if [ $res1 -le $res3 ] && [ $res1 -le $res4 ]
+	then
+		echo "$res1 is Minimum"
+	elif [ $res3 -le $res1 ] && [ $res3 -le $res4 ]
+	then
+		echo "$res3 is Minimum"
+	else
+		echo "$res4 is Minimum"
+	fi
+elif [ $res3 -ge $res4 ]
+then
+	echo "$res3 is Maximum"
+	if [ $res1 -le $res2 ] && [ $res1 -le $res4 ]
+	then
+		echo "$res1 is Minimum"
+	elif [ $res2 -le $res1 ] && [ $res2 -le $res4 ]
+	then
+		echo "$res2 is Minimum"
+	else
+		echo "$res4 is Minimum"
+	fi
+else
+	echo "$res4 is Maximum"
+	if [ $res1 -le $res2 ] && [ $res1 -le $res3 ]
+	then
+		echo "$res1 is Minimum"
+	elif [ $res2 -le $res1 ] && [ $res2 -le $res3 ]
+	then
+		echo "$res2 is Minimum"
+	else
+		echo "$res3 is Minimum"
+	fi
+fi
+
+#Program_9
+#Unit Conversion
+
+#!/bin/bash 
+#1ft=12inch
+#1inch=0.0833feet
+#1ft=0.3048m
+#1m=3.2808ft
+a=`shuf -i 1-4 -n 1`
+read -p "Enter the length:" L
+case $a in
+	1)
+		res=$(echo |awk '{ print L*12 }' L=$L);
+		echo "$res inches";;
+	2)
+		res=$(echo |awk '{ print L*0.3048}' L=$L);
+		echo "$res meters";;
+	3)
+		res=$(echo |awk '{ print L*0.0833}' L=$L);
+		echo "$res feets";;
+	4)
+		res=$(echo |awk '{ print L*3.2808}' L=$L);
+		echo "$res ft.";;
+	*)
+		echo Invalid Choice;;
+esac
+
+>>>>>>> origin
